@@ -1,7 +1,6 @@
 import re
 import math
 import nltk
-import os
 import string
 import time
 from nltk.stem.snowball import SnowballStemmer
@@ -9,9 +8,6 @@ from collections import Counter
 from nltk import word_tokenize
 from nltk.corpus import stopwords
 from operator import itemgetter
-
-
-# WIP #
 
 word = re.compile(r'\w+')
 
@@ -99,19 +95,3 @@ def summarize(data, value=0.20, language='english'):
     # sorts sentences based on their location in original text
     sentences.sort(key=itemgetter(1))
     return ' '.join([sentence[0] for sentence in sentences])
-
-
-def main():
-
-    for file in os.listdir('wikipedia-articles'):
-        if file.endswith('.txt'):
-            summarize_name = os.path.splitext(file)[0]
-            with open('wikipedia-articles/' + str(file), 'r') as f:
-                summarization = summarize(f.read())
-                with open('wikipedia-summarizations/' + str(summarize_name) +
-                          '-summarization.txt', 'w') as r:
-                    r.write(summarization)
-
-
-if __name__ == '__main__':
-    main()
