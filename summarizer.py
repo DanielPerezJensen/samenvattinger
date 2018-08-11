@@ -17,12 +17,13 @@ word = re.compile(r'\w+')
 
 
 def sentence_to_vector(text):
+    '''Creates a counter object from a given sentence/text'''
     words = word.findall(text)
     return Counter(words)
 
 
 def get_cosine(vec1, vec2):
-
+    '''Returns cosine similarity of two given sets/sentence-vectors'''
     intersection = set(vec1.keys()) & set(vec2.keys())
     numerator = sum([vec1[x] * vec2[x] for x in intersection])
 
@@ -37,6 +38,9 @@ def get_cosine(vec1, vec2):
 
 
 def summarize(data, value=0.20, language='english'):
+    '''Summarizes given data:
+        value=some_float: length of summary (0.2=20% of length original doc)
+        language="some_string": What language the original doc is in'''
 
     # all words that are irrelevant to sentence-vector/cosine-sim
     stop = list(set(stopwords.words(language))) + list(string.punctuation)
