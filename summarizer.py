@@ -87,11 +87,13 @@ def summarize(data, value=0.20, language='english'):
 
         sentence = sentence_data[scores.index(scores_ranked[i])]
         # skips over sentences that are already in summarization
-        if sentence in [sentence[0] for sentence in sentences]:
+        if sentence in sentences:
             i -= 1
             continue
-        sentences.append((sentence, sentence_data.index(sentence)))
+        sentences.append(sentence)
 
+    sentences_idx = [(sentence, sentence_data.index(sentence))
+                     for sentence in sentences]
     # sorts sentences based on their location in original text
-    sentences.sort(key=itemgetter(1))
-    return ' '.join([sentence[0] for sentence in sentences])
+    sentences_idx.sort(key=itemgetter(1))
+    return ' '.join([sentence[0] for sentence in sentences_idx])
