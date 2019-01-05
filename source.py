@@ -42,15 +42,13 @@ def summarize(data, value=0.20, language='english'):
     stop = list(set(stopwords.words(language))) + list(string.punctuation)
     # stemmer that stems all words for better cosine-sim calculation
     stemmer = SnowballStemmer(language)
-
     sentence_data = nltk.sent_tokenize(data)
+
     # initializes scores
     scores = [0 for sentence in sentence_data]
 
     for sentence_1 in sentence_data:
-
         cosines = []
-
         for sentence_2 in sentence_data:
 
             if sentence_2 is not sentence_1:
@@ -84,7 +82,6 @@ def summarize(data, value=0.20, language='english'):
 
     # adds sentences that have highest scores to our summarizations
     for i in range(n):
-
         sentence = sentence_data[scores.index(scores_ranked[i])]
         # skips over sentences that are already in summarization
         if sentence in sentences:
