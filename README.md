@@ -4,7 +4,7 @@ Based on [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity). E
 
 Usage: 
 ```bash
-summarizer.py <filename>.txt
+python summarizer.py <filename>.txt
 ```
 Alternatively:
 
@@ -12,7 +12,7 @@ You can import the summarizer function into your own programming like so.
 ```python
 import summarizer as sm
 
-string = <some string-object>
+string = <some string-variable>
 # language is the languague of the original string, english is used by default
 # value is the length of the summarization as a percentage of the original string.
 summarized-string = sm.summarize(string, language=<some language>, value=<some float between 0.1 and 1>)
