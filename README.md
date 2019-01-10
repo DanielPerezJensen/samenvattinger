@@ -12,8 +12,8 @@ You can import the summarizer function into your own programming like so.
 ```python
 import summarizer as sm
 
-string = <some string-variable>
-# language is the languague of the original string, english is used by default
+string = "<some text>"
+# language is the language of the original string, english is used by default
 # value is the length of the summarization as a percentage of the original string.
 summarized-string = sm.summarize(string, language=<some language>, value=<some float between 0.1 and 1>)
 
